@@ -1,0 +1,290 @@
+[
+  {
+    "id": "gk-01",
+    "question": "Which planet is known as the Red Planet?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Venus"
+      },
+      {
+        "id": "B",
+        "text": "Mars"
+      },
+      {
+        "id": "C",
+        "text": "Jupiter"
+      },
+      {
+        "id": "D",
+        "text": "Mercury"
+      }
+    ],
+    "answer": "B",
+    "explanation": "Mars often appears reddish because of iron oxide on its surface."
+  },
+  {
+    "id": "gk-02",
+    "question": "What is the largest ocean on Earth?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Atlantic Ocean"
+      },
+      {
+        "id": "B",
+        "text": "Indian Ocean"
+      },
+      {
+        "id": "C",
+        "text": "Arctic Ocean"
+      },
+      {
+        "id": "D",
+        "text": "Pacific Ocean"
+      }
+    ],
+    "answer": "D",
+    "explanation": "The Pacific Ocean is the largest ocean on Earth."
+  },
+  {
+    "id": "gk-03",
+    "question": "What is the capital of Japan?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Tokyo"
+      },
+      {
+        "id": "B",
+        "text": "Seoul"
+      },
+      {
+        "id": "C",
+        "text": "Beijing"
+      },
+      {
+        "id": "D",
+        "text": "Bangkok"
+      }
+    ],
+    "answer": "A",
+    "explanation": "Tokyo is the capital of Japan."
+  },
+  {
+    "id": "gk-04",
+    "question": "What is the chemical formula for water?",
+    "options": [
+      {
+        "id": "A",
+        "text": "CO2"
+      },
+      {
+        "id": "B",
+        "text": "O2"
+      },
+      {
+        "id": "C",
+        "text": "H2O"
+      },
+      {
+        "id": "D",
+        "text": "NaCl"
+      }
+    ],
+    "answer": "C",
+    "explanation": "A water molecule contains two hydrogen atoms and one oxygen atom."
+  },
+  {
+    "id": "gk-05",
+    "question": "How many days are there in a standard week?",
+    "options": [
+      {
+        "id": "A",
+        "text": "5"
+      },
+      {
+        "id": "B",
+        "text": "7"
+      },
+      {
+        "id": "C",
+        "text": "8"
+      },
+      {
+        "id": "D",
+        "text": "10"
+      }
+    ],
+    "answer": "B",
+    "explanation": "A standard week has seven days."
+  },
+  {
+    "id": "gk-06",
+    "question": "Which animal is the largest living mammal?",
+    "options": [
+      {
+        "id": "A",
+        "text": "African elephant"
+      },
+      {
+        "id": "B",
+        "text": "Giraffe"
+      },
+      {
+        "id": "C",
+        "text": "Blue whale"
+      },
+      {
+        "id": "D",
+        "text": "Hippopotamus"
+      }
+    ],
+    "answer": "C",
+    "explanation": "The blue whale is the largest living mammal."
+  },
+  {
+    "id": "gk-07",
+    "question": "Which star is closest to Earth?",
+    "options": [
+      {
+        "id": "A",
+        "text": "The Sun"
+      },
+      {
+        "id": "B",
+        "text": "Sirius"
+      },
+      {
+        "id": "C",
+        "text": "Polaris"
+      },
+      {
+        "id": "D",
+        "text": "Proxima Centauri"
+      }
+    ],
+    "answer": "A",
+    "explanation": "The Sun is the star at the centre of our solar system and the closest star to Earth."
+  },
+  {
+    "id": "gk-08",
+    "question": "On which continent is the Sahara Desert?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Asia"
+      },
+      {
+        "id": "B",
+        "text": "South America"
+      },
+      {
+        "id": "C",
+        "text": "Australia"
+      },
+      {
+        "id": "D",
+        "text": "Africa"
+      }
+    ],
+    "answer": "D",
+    "explanation": "The Sahara Desert is in northern Africa."
+  },
+  {
+    "id": "gk-09",
+    "question": "How many sides does a triangle have?",
+    "options": [
+      {
+        "id": "A",
+        "text": "4"
+      },
+      {
+        "id": "B",
+        "text": "3"
+      },
+      {
+        "id": "C",
+        "text": "5"
+      },
+      {
+        "id": "D",
+        "text": "6"
+      }
+    ],
+    "answer": "B",
+    "explanation": "A triangle is a polygon with three sides."
+  },
+  {
+    "id": "gk-10",
+    "question": "Which language is primarily spoken in Brazil?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Spanish"
+      },
+      {
+        "id": "B",
+        "text": "French"
+      },
+      {
+        "id": "C",
+        "text": "Portuguese"
+      },
+      {
+        "id": "D",
+        "text": "Italian"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Portuguese is the official and main language of Brazil."
+  },
+  {
+    "id": "gk-11",
+    "question": "What is the name of Earth’s natural satellite?",
+    "options": [
+      {
+        "id": "A",
+        "text": "The Moon"
+      },
+      {
+        "id": "B",
+        "text": "Mars"
+      },
+      {
+        "id": "C",
+        "text": "The Sun"
+      },
+      {
+        "id": "D",
+        "text": "Venus"
+      }
+    ],
+    "answer": "A",
+    "explanation": "The Moon is Earth’s natural satellite."
+  },
+  {
+    "id": "gk-12",
+    "question": "Which part of a plant usually absorbs water from the soil?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Flower"
+      },
+      {
+        "id": "B",
+        "text": "Fruit"
+      },
+      {
+        "id": "C",
+        "text": "Leaves"
+      },
+      {
+        "id": "D",
+        "text": "Roots"
+      }
+    ],
+    "answer": "D",
+    "explanation": "Roots absorb water and minerals from the soil."
+  }
+]

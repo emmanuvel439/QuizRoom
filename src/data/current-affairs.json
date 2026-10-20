@@ -1,0 +1,350 @@
+[
+  {
+    "id": "ca-01",
+    "question": "Who received the 2025 Nobel Peace Prize?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Greta Thunberg"
+      },
+      {
+        "id": "B",
+        "text": "Maria Corina Machado"
+      },
+      {
+        "id": "C",
+        "text": "Malala Yousafzai"
+      },
+      {
+        "id": "D",
+        "text": "Narges Mohammadi"
+      }
+    ],
+    "answer": "B",
+    "explanation": "The Nobel Committee awarded the 2025 Nobel Peace Prize to Maria Corina Machado for her work promoting democratic rights in Venezuela.",
+    "source": {
+      "title": "Nobel Peace Prize 2025 — official summary",
+      "url": "https://www.nobelprize.org/prizes/peace/2025/summary/",
+      "verifiedOn": "2026-10-20"
+    }
+  },
+  {
+    "id": "ca-02",
+    "question": "Which club won the 2025 FIFA Club World Cup?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Chelsea FC"
+      },
+      {
+        "id": "B",
+        "text": "Real Madrid"
+      },
+      {
+        "id": "C",
+        "text": "Manchester City"
+      },
+      {
+        "id": "D",
+        "text": "Paris Saint-Germain"
+      }
+    ],
+    "answer": "A",
+    "explanation": "Chelsea won the 2025 FIFA Club World Cup final, defeating Paris Saint-Germain 3–0.",
+    "source": {
+      "title": "FIFA Club World Cup 2025 results",
+      "url": "https://www.fifa.com/en/articles/match-schedule-fixtures-results-groups-teams-stadiums",
+      "verifiedOn": "2026-10-20"
+    }
+  },
+  {
+    "id": "ca-03",
+    "question": "Which country won the ICC Men’s Champions Trophy in 2025?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Australia"
+      },
+      {
+        "id": "B",
+        "text": "New Zealand"
+      },
+      {
+        "id": "C",
+        "text": "India"
+      },
+      {
+        "id": "D",
+        "text": "South Africa"
+      }
+    ],
+    "answer": "C",
+    "explanation": "India defeated New Zealand in the final to win the 2025 ICC Men’s Champions Trophy.",
+    "source": {
+      "title": "India edge New Zealand to win the Champions Trophy 2025",
+      "url": "https://www.icc-cricket.com/news/live-india-and-new-zealand-on-crossroads-in-the-champions-trophy-final",
+      "verifiedOn": "2026-10-20"
+    }
+  },
+  {
+    "id": "ca-04",
+    "question": "Which country won its first ICC Women’s Cricket World Cup title in 2025?",
+    "options": [
+      {
+        "id": "A",
+        "text": "England"
+      },
+      {
+        "id": "B",
+        "text": "Australia"
+      },
+      {
+        "id": "C",
+        "text": "South Africa"
+      },
+      {
+        "id": "D",
+        "text": "India"
+      }
+    ],
+    "answer": "D",
+    "explanation": "India defeated South Africa in the final to win its first ICC Women’s Cricket World Cup title in 2025.",
+    "source": {
+      "title": "India clinch historic first ICC Women’s Cricket World Cup title",
+      "url": "https://www.icc-cricket.com/media-releases/india-clinch-historic-first-icc-women-s-cricket-world-cup-title",
+      "verifiedOn": "2026-10-20"
+    }
+  },
+  {
+    "id": "ca-05",
+    "question": "Which film won Best Picture at the 2025 Academy Awards?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Wicked"
+      },
+      {
+        "id": "B",
+        "text": "Anora"
+      },
+      {
+        "id": "C",
+        "text": "The Brutalist"
+      },
+      {
+        "id": "D",
+        "text": "Dune: Part Two"
+      }
+    ],
+    "answer": "B",
+    "explanation": "Anora was the Best Picture winner at the 97th Academy Awards in 2025.",
+    "source": {
+      "title": "The 97th Academy Awards — 2025",
+      "url": "https://www.oscars.org/oscars/ceremonies/2025",
+      "verifiedOn": "2026-10-20"
+    }
+  },
+  {
+    "id": "ca-06",
+    "question": "Which country won the UEFA Women’s EURO 2025?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Spain"
+      },
+      {
+        "id": "B",
+        "text": "Germany"
+      },
+      {
+        "id": "C",
+        "text": "England"
+      },
+      {
+        "id": "D",
+        "text": "France"
+      }
+    ],
+    "answer": "C",
+    "explanation": "England beat Spain on penalties in the final to retain the UEFA Women’s EURO title.",
+    "source": {
+      "title": "UEFA Women’s EURO 2025: Meet the winners — England",
+      "url": "https://www.uefa.com/womenseuro/news/029b-1e4ecc17145a-6a6317e5408d-1000--uefa-women-s-euro-2025-final-meet-the-contenders-england/",
+      "verifiedOn": "2026-10-20"
+    }
+  },
+  {
+    "id": "ca-07",
+    "question": "In which city was the 2025 G20 Leaders’ Summit held?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Johannesburg"
+      },
+      {
+        "id": "B",
+        "text": "Tokyo"
+      },
+      {
+        "id": "C",
+        "text": "New Delhi"
+      },
+      {
+        "id": "D",
+        "text": "Rome"
+      }
+    ],
+    "answer": "A",
+    "explanation": "South Africa hosted the G20 Leaders’ Summit in Johannesburg on 22–23 November 2025.",
+    "source": {
+      "title": "G20 Leaders’ Summit, South Africa 2025",
+      "url": "https://www.g20.org.za/g20-media/g20-leaders-summit-south-africa-2025-2/",
+      "verifiedOn": "2026-10-20"
+    }
+  },
+  {
+    "id": "ca-08",
+    "question": "In which Brazilian city was the COP30 climate conference held in 2025?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Rio de Janeiro"
+      },
+      {
+        "id": "B",
+        "text": "Brasília"
+      },
+      {
+        "id": "C",
+        "text": "São Paulo"
+      },
+      {
+        "id": "D",
+        "text": "Belém"
+      }
+    ],
+    "answer": "D",
+    "explanation": "The UN Climate Change Conference COP30 took place in Belém, Brazil, in November 2025.",
+    "source": {
+      "title": "UN Climate Change Conference — Belém, November 2025",
+      "url": "https://unfccc.int/cop30",
+      "verifiedOn": "2026-10-20"
+    }
+  },
+  {
+    "id": "ca-09",
+    "question": "Which Indian astronaut travelled to the International Space Station on the Axiom-4 mission in 2025?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Rakesh Sharma"
+      },
+      {
+        "id": "B",
+        "text": "Shubhanshu Shukla"
+      },
+      {
+        "id": "C",
+        "text": "Kalpana Chawla"
+      },
+      {
+        "id": "D",
+        "text": "Sunita Williams"
+      }
+    ],
+    "answer": "B",
+    "explanation": "Shubhanshu Shukla served as the pilot of the Axiom-4 mission, which launched in June 2025.",
+    "source": {
+      "title": "Successful Launch of Axiom Mission 4 with Shubhanshu Shukla onboard",
+      "url": "https://www.isro.gov.in/Successful_Launch_of_Axiom_Mission.html",
+      "verifiedOn": "2026-10-20"
+    }
+  },
+  {
+    "id": "ca-10",
+    "question": "Who won the 2025 Formula 1 Drivers’ World Championship?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Oscar Piastri"
+      },
+      {
+        "id": "B",
+        "text": "Lewis Hamilton"
+      },
+      {
+        "id": "C",
+        "text": "Lando Norris"
+      },
+      {
+        "id": "D",
+        "text": "Charles Leclerc"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Lando Norris won his first Formula 1 Drivers’ Championship at the 2025 season finale in Abu Dhabi.",
+    "source": {
+      "title": "Norris secures maiden F1 title in Abu Dhabi",
+      "url": "https://www.formula1.com/en/latest/article/norris-secures-maiden-f1-title-in-abu-dhabi-with-podium-finish-behind.EMJtmvRA0uzmzUC4MZgmw",
+      "verifiedOn": "2026-10-20"
+    }
+  },
+  {
+    "id": "ca-11",
+    "question": "Which three countries co-hosted the 2026 FIFA Men’s World Cup?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Spain, Portugal and Morocco"
+      },
+      {
+        "id": "B",
+        "text": "Canada, Mexico and the United States"
+      },
+      {
+        "id": "C",
+        "text": "Brazil, Argentina and Chile"
+      },
+      {
+        "id": "D",
+        "text": "France, Germany and Italy"
+      }
+    ],
+    "answer": "B",
+    "explanation": "FIFA confirms that Canada, Mexico and the United States co-hosted the 2026 tournament.",
+    "source": {
+      "title": "FIFA World Cup 2026: host countries and tournament details",
+      "url": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/fifa-world-cup-2026-hosts-cities-dates-usa-mexico-canada",
+      "verifiedOn": "2026-10-20"
+    }
+  },
+  {
+    "id": "ca-12",
+    "question": "Which country hosted the Milano Cortina 2026 Winter Olympics?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Japan"
+      },
+      {
+        "id": "B",
+        "text": "Canada"
+      },
+      {
+        "id": "C",
+        "text": "Norway"
+      },
+      {
+        "id": "D",
+        "text": "Italy"
+      }
+    ],
+    "answer": "D",
+    "explanation": "The Milano Cortina 2026 Winter Olympics were hosted in Italy.",
+    "source": {
+      "title": "Milano Cortina 2026 official Olympic website",
+      "url": "https://olympics.com/en/milano-cortina-2026",
+      "verifiedOn": "2026-10-20"
+    }
+  }
+]

@@ -1,0 +1,290 @@
+[
+  {
+    "id": "prog-01",
+    "question": "Which C++ statement displays text on the screen?",
+    "options": [
+      {
+        "id": "A",
+        "text": "cin << \"Hello\";"
+      },
+      {
+        "id": "B",
+        "text": "cout << \"Hello\";"
+      },
+      {
+        "id": "C",
+        "text": "input(\"Hello\");"
+      },
+      {
+        "id": "D",
+        "text": "print(\"Hello\");"
+      }
+    ],
+    "answer": "B",
+    "explanation": "In C++, cout sends output to the screen."
+  },
+  {
+    "id": "prog-02",
+    "question": "Which C++ type is commonly used to store a whole number?",
+    "options": [
+      {
+        "id": "A",
+        "text": "int"
+      },
+      {
+        "id": "B",
+        "text": "string"
+      },
+      {
+        "id": "C",
+        "text": "bool"
+      },
+      {
+        "id": "D",
+        "text": "char"
+      }
+    ],
+    "answer": "A",
+    "explanation": "The int type stores integer values such as 4 or -2."
+  },
+  {
+    "id": "prog-03",
+    "question": "What is the result of 5 + 3?",
+    "options": [
+      {
+        "id": "A",
+        "text": "2"
+      },
+      {
+        "id": "B",
+        "text": "8"
+      },
+      {
+        "id": "C",
+        "text": "15"
+      },
+      {
+        "id": "D",
+        "text": "53"
+      }
+    ],
+    "answer": "B",
+    "explanation": "Adding five and three gives eight."
+  },
+  {
+    "id": "prog-04",
+    "question": "Which keyword lets a program make a decision based on a condition?",
+    "options": [
+      {
+        "id": "A",
+        "text": "repeat"
+      },
+      {
+        "id": "B",
+        "text": "loop"
+      },
+      {
+        "id": "C",
+        "text": "if"
+      },
+      {
+        "id": "D",
+        "text": "show"
+      }
+    ],
+    "answer": "C",
+    "explanation": "An if statement runs code when its condition is true."
+  },
+  {
+    "id": "prog-05",
+    "question": "Which loop is commonly used to repeat code a known number of times?",
+    "options": [
+      {
+        "id": "A",
+        "text": "for"
+      },
+      {
+        "id": "B",
+        "text": "if"
+      },
+      {
+        "id": "C",
+        "text": "switch"
+      },
+      {
+        "id": "D",
+        "text": "return"
+      }
+    ],
+    "answer": "A",
+    "explanation": "A for loop is commonly used when the number of repetitions is known."
+  },
+  {
+    "id": "prog-06",
+    "question": "What does the operator == check in C++?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Assigns a value"
+      },
+      {
+        "id": "B",
+        "text": "Adds two values"
+      },
+      {
+        "id": "C",
+        "text": "Compares two values for equality"
+      },
+      {
+        "id": "D",
+        "text": "Prints a value"
+      }
+    ],
+    "answer": "C",
+    "explanation": "The == operator checks whether two values are equal."
+  },
+  {
+    "id": "prog-07",
+    "question": "Which C++ stream is commonly used to read keyboard input?",
+    "options": [
+      {
+        "id": "A",
+        "text": "cout"
+      },
+      {
+        "id": "B",
+        "text": "cin"
+      },
+      {
+        "id": "C",
+        "text": "cerr"
+      },
+      {
+        "id": "D",
+        "text": "clog"
+      }
+    ],
+    "answer": "B",
+    "explanation": "cin is the standard input stream, commonly used for keyboard input."
+  },
+  {
+    "id": "prog-08",
+    "question": "Which of these is a valid single-line C++ comment?",
+    "options": [
+      {
+        "id": "A",
+        "text": "** comment"
+      },
+      {
+        "id": "B",
+        "text": "<!-- comment -->"
+      },
+      {
+        "id": "C",
+        "text": "// comment"
+      },
+      {
+        "id": "D",
+        "text": "## comment"
+      }
+    ],
+    "answer": "C",
+    "explanation": "In C++, // begins a single-line comment."
+  },
+  {
+    "id": "prog-09",
+    "question": "What is a function mainly used for?",
+    "options": [
+      {
+        "id": "A",
+        "text": "To group reusable instructions"
+      },
+      {
+        "id": "B",
+        "text": "To change the monitor brightness"
+      },
+      {
+        "id": "C",
+        "text": "To turn code into a picture"
+      },
+      {
+        "id": "D",
+        "text": "To connect to Wi-Fi"
+      }
+    ],
+    "answer": "A",
+    "explanation": "A function groups instructions that can be called when needed."
+  },
+  {
+    "id": "prog-10",
+    "question": "Which type is commonly used to store text in modern C++?",
+    "options": [
+      {
+        "id": "A",
+        "text": "bool"
+      },
+      {
+        "id": "B",
+        "text": "int"
+      },
+      {
+        "id": "C",
+        "text": "double"
+      },
+      {
+        "id": "D",
+        "text": "string"
+      }
+    ],
+    "answer": "D",
+    "explanation": "std::string is used to store text. In beginner examples, string is often written after using namespace std."
+  },
+  {
+    "id": "prog-11",
+    "question": "What value does this code print?  int x = 4; cout << x;",
+    "options": [
+      {
+        "id": "A",
+        "text": "0"
+      },
+      {
+        "id": "B",
+        "text": "4"
+      },
+      {
+        "id": "C",
+        "text": "x"
+      },
+      {
+        "id": "D",
+        "text": "It always causes an error"
+      }
+    ],
+    "answer": "B",
+    "explanation": "The variable x is assigned 4, so cout prints 4."
+  },
+  {
+    "id": "prog-12",
+    "question": "Which keyword sends a value back from a function?",
+    "options": [
+      {
+        "id": "A",
+        "text": "break"
+      },
+      {
+        "id": "B",
+        "text": "if"
+      },
+      {
+        "id": "C",
+        "text": "return"
+      },
+      {
+        "id": "D",
+        "text": "include"
+      }
+    ],
+    "answer": "C",
+    "explanation": "return ends the function call and can send a value back to the caller."
+  }
+]
