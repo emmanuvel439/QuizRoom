@@ -387,26 +387,7 @@ button:disabled {
   font-weight: 850;
 }
 
-.progress-track,
-.score-progress-track {
-  width: 100%;
-  height: 7px;
-  overflow: hidden;
-  background: #e9e8f3;
-  border-radius: 20px;
-}
 
-.progress-track {
-  margin-bottom: 23px;
-}
-
-.progress-fill,
-.score-progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #7b6bff, var(--purple));
-  border-radius: inherit;
-  transition: width 200ms ease;
-}
 
 .question-panel {
   padding: clamp(21px, 4vw, 34px);
@@ -675,11 +656,7 @@ button:disabled {
   letter-spacing: 1.8px;
 }
 
-.score-progress-track {
-  height: 6px;
-  margin-top: 17px;
-  background: #dcd8fa;
-}
+
 
 .score-card > p {
   margin: 13px 0 0;

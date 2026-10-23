@@ -42,7 +42,6 @@ const quizCards = [
     difficulty: 'BEGINNER',
     description: 'Test your coding knowledge and problem-solving skills.',
     icon: '</>',
-    duration: '5 min',
   },
   {
     id: 'general-knowledge',
@@ -50,7 +49,6 @@ const quizCards = [
     difficulty: 'BEGINNER',
     description: 'Explore science, history, geography and more.',
     icon: '?',
-    duration: '5 min',
   },
   {
     id: 'current-affairs',
@@ -58,7 +56,6 @@ const quizCards = [
     difficulty: 'INTERMEDIATE',
     description: 'Test your awareness of events around the world.',
     icon: '↗',
-    duration: '5 min',
   },
 ] satisfies {
   id: QuizId;
@@ -66,7 +63,6 @@ const quizCards = [
   difficulty: string;
   description: string;
   icon: string;
-  duration: string;
 }[];
 
 /**
@@ -279,9 +275,6 @@ function App() {
             <div className="score-card" aria-label={`Your score is ${scorePercentage} percent`}>
               <span className="score-number">{scorePercentage}%</span>
               <span className="score-label">YOUR SCORE</span>
-              <div className="score-progress-track" aria-hidden="true">
-                <div className="score-progress-fill" style={{ width: `${scorePercentage}%` }} />
-              </div>
               <p>
                 {correctCount} of {activeQuiz.length} questions correct
               </p>
@@ -403,7 +396,6 @@ function App() {
 
   // QUIZ SCREEN: the active quiz exists and the user has not submitted yet.
   if (activeQuiz && activeQuizInfo && currentQuestion) {
-    const progress = ((currentQuestionIndex + 1) / activeQuiz.length) * 100;
     const selectedOptionId = answers[currentQuestion.id];
 
     return (
@@ -428,7 +420,7 @@ function App() {
             <div>
               <p className="eyebrow">NOW PLAYING</p>
               <h1 className="quiz-title">{activeQuizInfo.title}</h1>
-              <p className="quiz-subtitle">{activeQuizInfo.difficulty} · {activeQuizInfo.duration}</p>
+              <p className="quiz-subtitle">{activeQuizInfo.difficulty}</p>
             </div>
 
             <span className="question-counter">
@@ -436,16 +428,7 @@ function App() {
             </span>
           </div>
 
-          <div
-            className="progress-track"
-            role="progressbar"
-            aria-label="Quiz progress"
-            aria-valuemin={0}
-            aria-valuemax={activeQuiz.length}
-            aria-valuenow={currentQuestionIndex + 1}
-          >
-            <div className="progress-fill" style={{ width: `${progress}%` }} />
-          </div>
+         
 
           <div className="question-panel">
             <p className="question-label">QUESTION {currentQuestionIndex + 1}</p>
@@ -507,12 +490,7 @@ function App() {
               })}
             </div>
 
-            {unansweredCount > 0 && (
-              <p className="unanswered-note">
-                {unansweredCount} question{unansweredCount === 1 ? '' : 's'} still unanswered.
-                You can return to them before submitting.
-              </p>
-            )}
+           
           </section>
 
           <div className="quiz-navigation">
@@ -525,23 +503,24 @@ function App() {
               ← Previous
             </button>
 
-            {currentQuestionIndex < activeQuiz.length - 1 ? (
+            {currentQuestionIndex < activeQuiz.length - 1 && (
               <button
-                className="primary-button"
-                type="button"
-                onClick={goToNextQuestion}
+              className="primary-button"
+              type="button"
+              onClick={goToNextQuestion}
               >
-                Next question →
-              </button>
-            ) : (
-              <button
-                className="primary-button submit-button"
-                type="button"
-                onClick={submitQuiz}
-              >
-                Submit quiz ✓
+                 Next question →
               </button>
             )}
+
+            <button
+              className="primary-button submit-button"
+              type="button"
+              onClick={submitQuiz}
+          >
+              Submit quiz ✓
+            </button> 
+            
           </div>
         </section>
       </main>
@@ -595,7 +574,6 @@ function App() {
 
                 <div className="quiz-meta">
                   <span>{questionCount} questions</span>
-                  <span>{quiz.duration}</span>
                 </div>
 
                 <button
