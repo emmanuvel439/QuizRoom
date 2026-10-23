@@ -162,6 +162,8 @@ function App() {
     setShowResults(false);
   }
 
+ 
+
   // Save the user's selected option for the current question.
   function selectAnswer(optionId: string) {
     if (!currentQuestion) return;
@@ -212,7 +214,20 @@ function App() {
   // Retaking starts a fresh attempt of the same quiz.
   function retakeQuiz() {
     if (activeQuizId) startQuiz(activeQuizId);
+
+
   }
+
+ // Remove the user's answer for the current question.
+function removeAnswer() {
+  if (!currentQuestion) return;
+
+  setAnswers(previous => {
+    const updated = { ...previous };
+    delete updated[currentQuestion.id];
+    return updated;
+  });
+}
 
   // Handle the unlikely case that a quiz ID points to an empty question bank.
   if (activeQuizId && activeQuizInfo && activeQuiz?.length === 0) {
@@ -502,6 +517,16 @@ function App() {
             >
               ← Previous
             </button>
+            <button
+              className="secondary-button"
+              type="button"
+              onClick={removeAnswer}
+
+              
+            >
+              Remove answer
+            </button>
+            
 
             {currentQuestionIndex < activeQuiz.length - 1 && (
               <button
