@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from "react";
 import './App.css';
 import programmingData from './data/programming.json';
 import generalKnowledgeData from './data/general-knowledge.json';
@@ -33,6 +33,7 @@ const quizBanks: Record<QuizId, QuizQuestion[]> = {
   'general-knowledge': generalKnowledgeData,
   'current-affairs': currentAffairsData,
 };
+
 
 // Information for the quiz cards on the first screen.
 const quizCards = [
@@ -101,6 +102,7 @@ function isAnswerCorrect(
   return selectedOptionId.trim().toLowerCase() === question.answer.trim().toLowerCase();
 }
 
+
 function App() {
   // null means that no quiz has been selected yet.
   const [activeQuizId, setActiveQuizId] = useState<QuizId | null>(null);
@@ -114,11 +116,21 @@ function App() {
 
   // This state switches from the question screen to the results screen.
   const [showResults, setShowResults] = useState(false);
+// this state controls wthether the quiz setup screen is shown or not. It is initially set to false, meaning the quiz setup screen is hidden by default.
+  const [showQuizSetup, setShowQuizSetup] = useState(false);
+// this state controls whether negative marking is enabled or not. It is initially set to false, meaning negative marking is disabled by default.
+  const [negativeMarking, setNegativeMarking] = useState(false);
+// this state controls whether the timer is enabled or not. It is initially set to false, meaning the timer is disabled by default.
+  const [timerEnabled, setTimerEnabled] = useState(false);
+  // 5 minute stored in seconds as a state varibale so that its change is constantly updated in the screen
+  const [ TimeRemaining, setTimeremaining] = useState(300);
 
   // Look up the selected quiz's question bank and its card metadata.
   const activeQuiz = activeQuizId ? quizBanks[activeQuizId] : null;
   const activeQuizInfo = quizCards.find((quiz) => quiz.id === activeQuizId);
   const currentQuestion = activeQuiz?.[currentQuestionIndex] ?? null;
+  const quizIsRunning =
+  Boolean(activeQuiz) && !showQuizSetup && !showResults;
 
   // ----- Score calculations -----
   // Count questions with a saved answer, regardless of whether it is correct.
@@ -147,12 +159,12 @@ function App() {
     ? activeQuiz.length - answeredCount
     : 0;
 
-  // The percentage is based on the total number of questions, not only attempted ones.
-  // For example, 3 correct out of 5 questions gives 60% even if 1 was left blank.
-  const scorePercentage =
-    activeQuiz && activeQuiz.length > 0
-      ? Math.round((correctCount / activeQuiz.length) * 100)
-      : 0;
+// The score is the number of correct answers minus a penalty for incorrect answers if negative marking is enabled.
+  const score =
+  correctCount - (negativeMarking ? incorrectCount * 0.25 : 0);
+
+
+ 
 
   // Start a quiz and clear any answers/results left by a previous attempt.
   function startQuiz(quizId: QuizId) {
@@ -160,6 +172,7 @@ function App() {
     setCurrentQuestionIndex(0);
     setAnswers({});
     setShowResults(false);
+    setShowQuizSetup(true);
   }
 
  
@@ -228,6 +241,24 @@ function removeAnswer() {
     return updated;
   });
 }
+useEffect(() => {
+  if (!timerEnabled || !quizIsRunning) {
+    return;
+  }
+
+  if (TimeRemaining <= 0) {
+    setShowResults(true);
+    return;
+  }
+
+  const timeoutId = window.setTimeout(() => {
+    setTimeremaining(previousTime =>
+      Math.max(previousTime - 1, 0)
+    );
+  }, 1000);
+
+  return () => window.clearTimeout(timeoutId);
+}, [timerEnabled, quizIsRunning, TimeRemaining]);
 
   // Handle the unlikely case that a quiz ID points to an empty question bank.
   if (activeQuizId && activeQuizInfo && activeQuiz?.length === 0) {
@@ -256,13 +287,13 @@ function removeAnswer() {
   // RESULTS SCREEN: shown only after the user submits their attempt.
   if (activeQuiz && activeQuizInfo && showResults) {
     const resultTitle =
-      scorePercentage === 100
+      score === 12
         ? 'Perfect score!'
-        : scorePercentage >= 80
+        : score >= 10
           ? 'Excellent work!'
-          : scorePercentage >= 60
+          : score >= 7
             ? 'Nice work!'
-            : scorePercentage >= 40
+            : score >= 5
               ? 'Good effort!'
               : 'Keep practising!';
 
@@ -287,8 +318,8 @@ function removeAnswer() {
               You finished <strong>{activeQuizInfo.title}</strong>. Here is how you did.
             </p>
 
-            <div className="score-card" aria-label={`Your score is ${scorePercentage} percent`}>
-              <span className="score-number">{scorePercentage}%</span>
+            <div className="score-card" aria-label={`Your score is ${score} `}>
+              <span className="score-number">{score}</span>
               <span className="score-label">YOUR SCORE</span>
               <p>
                 {correctCount} of {activeQuiz.length} questions correct
@@ -408,7 +439,77 @@ function removeAnswer() {
       </main>
     );
   }
+if (showQuizSetup && activeQuiz && currentQuestion) {
+  return (
+    <main className="app-shell">
+      <header className="site-header">
+        <button
+          className="back-button"
+          type="button"
+          onClick={goBackToSelection}
+        >
+          ← All quizzes
+        </button>
 
+        <div className="brand">
+          <span className="brand-mark">Q</span>
+          <span>quizroom</span>
+        </div>
+      </header>
+
+      <section className="quiz-setup-container">
+        <div className="quiz-setup-card">
+          <h1>Quiz Setup</h1>
+          <p>Customize your quiz before you begin.</p>
+
+          {/* Negative marking option */}
+          <button
+            className={`setup-option ${
+              negativeMarking ? "selected" : ""
+            }`}
+            type="button"
+            aria-pressed={negativeMarking}
+            onClick={() =>
+              setNegativeMarking(previous => !previous)
+            }
+          >
+            <span>Negative marking</span>
+            {negativeMarking && <span>✓</span>}
+          </button>
+
+          {/* Timer option */}
+          <button
+            className={`setup-option ${
+              timerEnabled ? "selected" : ""
+            }`}
+            type="button"
+            aria-pressed={timerEnabled}
+            onClick={() =>
+              setTimerEnabled(previous => !previous)
+            }
+          >
+            <span>Five-minute timer</span>
+            {timerEnabled && <span>✓</span>}
+          </button>
+
+          <button
+            className="primary-button begin-quiz-button"
+            type="button"
+            onClick={() => {
+                if (timerEnabled) {
+                setTimeremaining(300);
+                  }
+
+                setShowQuizSetup(false);
+                  }}
+          >
+            Begin Quiz →
+          </button>
+        </div>
+      </section>
+    </main>
+  );
+}
   // QUIZ SCREEN: the active quiz exists and the user has not submitted yet.
   if (activeQuiz && activeQuizInfo && currentQuestion) {
     const selectedOptionId = answers[currentQuestion.id];
@@ -447,6 +548,12 @@ function removeAnswer() {
 
           <div className="question-panel">
             <p className="question-label">QUESTION {currentQuestionIndex + 1}</p>
+            {timerEnabled && (
+            <p className="question-label">
+            {String(Math.floor(TimeRemaining / 60)).padStart(2, "0")}:
+            {String(TimeRemaining % 60).padStart(2, "0")}
+             </p>
+)}
             <h2 className="question-text">{currentQuestion.question}</h2>
             <p className="answer-hint">Select one answer.</p>
 
