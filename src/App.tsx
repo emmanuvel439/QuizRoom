@@ -33,6 +33,10 @@ const quizBanks: Record<QuizId, QuizQuestion[]> = {
   'general-knowledge': generalKnowledgeData,
   'current-affairs': currentAffairsData,
 };
+// Randomize the order of an array's items. This is used to shuffle thE QUESTIONS and the answer options so that the quiz is not always the same.
+function shuffle<T,>(items: T[]): T[] {
+  return [...items].sort(() => Math.random() - 0.5);
+}
 
 
 // Information for the quiz cards on the first screen.
@@ -124,13 +128,14 @@ function App() {
   const [timerEnabled, setTimerEnabled] = useState(false);
   // 5 minute stored in seconds as a state varibale so that its change is constantly updated in the screen
   const [ TimeRemaining, setTimeremaining] = useState(300);
+  // this state stores the shuffled questions for the active quiz.
+  const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>([]);
 
   // Look up the selected quiz's question bank and its card metadata.
-  const activeQuiz = activeQuizId ? quizBanks[activeQuizId] : null;
+  const activeQuiz =  activeQuizId ? shuffledQuestions : null;
   const activeQuizInfo = quizCards.find((quiz) => quiz.id === activeQuizId);
   const currentQuestion = activeQuiz?.[currentQuestionIndex] ?? null;
-  const quizIsRunning =
-  Boolean(activeQuiz) && !showQuizSetup && !showResults;
+  const quizIsRunning =Boolean(activeQuiz) && !showQuizSetup && !showResults;
 
   // ----- Score calculations -----
   // Count questions with a saved answer, regardless of whether it is correct.
@@ -169,6 +174,12 @@ function App() {
   // Start a quiz and clear any answers/results left by a previous attempt.
   function startQuiz(quizId: QuizId) {
     setActiveQuizId(quizId);
+    setShuffledQuestions(
+    shuffle(quizBanks[quizId]).map(question => ({
+      ...question,
+      options: shuffle(question.options),
+    }))
+  );
     setCurrentQuestionIndex(0);
     setAnswers({});
     setShowResults(false);
@@ -323,6 +334,9 @@ useEffect(() => {
               <span className="score-label">YOUR SCORE</span>
               <p>
                 {correctCount} of {activeQuiz.length} questions correct
+              </p>
+              <p className="score-label">
+                {((score / activeQuiz.length) * 100).toFixed(2)}%
               </p>
             </div>
           </div>
@@ -721,7 +735,7 @@ if (showQuizSetup && activeQuiz && currentQuestion) {
         </div>
       </section>
 
-      <footer className="site-footer">quizroom · A little challenge goes a long way.</footer>
+      
     </main>
   );
 }
