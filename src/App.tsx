@@ -130,6 +130,8 @@ function App() {
   const [ TimeRemaining, setTimeremaining] = useState(300);
   // this state stores the shuffled questions for the active quiz.
   const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>([]);
+  // dark mode storing it true means dark mode false is light mode 
+  const [darkMode, setDarkMode] = useState(false);
 
   // Look up the selected quiz's question bank and its card metadata.
   const activeQuiz =  activeQuizId ? shuffledQuestions : null;
@@ -167,6 +169,11 @@ function App() {
 // The score is the number of correct answers minus a penalty for incorrect answers if negative marking is enabled.
   const score =
   correctCount - (negativeMarking ? incorrectCount * 0.25 : 0);
+  
+  useEffect(() => {
+  document.documentElement.dataset.theme =
+    darkMode ? "dark" : "light";
+}, [darkMode]);
 
 
  
@@ -282,6 +289,12 @@ useEffect(() => {
           <div className="brand">
             <span className="brand-mark">Q</span>
             <span>quizroom</span>
+            <button
+              className="theme-toggle"
+              onClick={() => setDarkMode(previous => !previous)}
+              >
+              {darkMode ? "Light mode" : "Dark mode"}
+            </button>
           </div>
         </header>
         <section className="empty-state">
@@ -319,6 +332,12 @@ useEffect(() => {
             <span className="brand-mark">Q</span>
             <span>quizroom</span>
           </div>
+          <button
+              className="theme-toggle"
+              onClick={() => setDarkMode(previous => !previous)}
+              >
+              {darkMode ? "Light mode" : "Dark mode"}
+            </button>
         </header>
 
         <section className="results-screen">
@@ -469,6 +488,12 @@ if (showQuizSetup && activeQuiz && currentQuestion) {
           <span className="brand-mark">Q</span>
           <span>quizroom</span>
         </div>
+        <button
+              className="theme-toggle"
+              onClick={() => setDarkMode(previous => !previous)}
+              >
+              {darkMode ? "Light mode" : "Dark mode"}
+            </button>
       </header>
 
       <section className="quiz-setup-container">
@@ -543,6 +568,12 @@ if (showQuizSetup && activeQuiz && currentQuestion) {
             <span className="brand-mark">Q</span>
             <span>quizroom</span>
           </div>
+          <button
+              className="theme-toggle"
+              onClick={() => setDarkMode(previous => !previous)}
+              >
+              {darkMode ? "Light mode" : "Dark mode"}
+            </button>
         </header>
 
         <section className="quiz-screen">
@@ -677,10 +708,17 @@ if (showQuizSetup && activeQuiz && currentQuestion) {
   return (
     <main className="app-shell">
       <header className="site-header">
+        <button
+              className="theme-toggle"
+              onClick={() => setDarkMode(previous => !previous)}
+              >
+              {darkMode ? "Light mode" : "Dark mode"}
+        </button>
         <div className="brand">
           <span className="brand-mark">Q</span>
           <span>quizroom</span>
         </div>
+        
 
         <p className="header-note">A little challenge goes a long way.</p>
       </header>
