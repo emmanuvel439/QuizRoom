@@ -2,6 +2,8 @@
 
 A React quiz application. Choose one of the three available quizzes, answer the questions, and review your results.
 
+**Live demo:** [https://quiz-room-delta.vercel.app](https://quiz-room-delta.vercel.app)
+
 ## Screenshots
 
 ### Quiz selection
@@ -102,6 +104,8 @@ npm run dev
 ```
 
 Open the URL Vite prints (usually http://localhost:5173). No environment variables or extra services are required.
+
+Or skip the setup and try the deployed version: [quiz-room-delta.vercel.app](https://quiz-room-delta.vercel.app).
 
 ## How to use the application
 
