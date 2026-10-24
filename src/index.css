@@ -24,3 +24,7 @@ body {
   padding: 0;
   text-align: left;
 }
+:root[data-theme="dark"] {
+  color: #f7f8fc;
+  background: #182230;
+}
