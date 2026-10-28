@@ -75,7 +75,6 @@ Once you finish a quiz, the attempt is saved to your browser's local storage. Yo
 
 ### Future improvements
 
-- Leaderboard page that stores and displays scores from previous attempts
 - Ability to create and add new quizzes
 - Customisable time limits so the quiz duration can be set by the user
 - User accounts so people can log in and save their progress
@@ -128,6 +127,4 @@ Or skip the setup and try the deployed version: [quiz-room-delta.vercel.app](htt
 5. Review your score, the three metric cards, and the per-question breakdown. Retake the quiz or return to the list.
 6. Want to see how you did before? Open the previous attempts page to check your saved scores for each quiz. Use **Back** to return to where you were.
 
-## A note on saved attempts
 
-Because attempts live in your browser's local storage, they are tied to the browser and device you used. Clearing your browser data, using a private window, or switching to another browser or device will start you with an empty history.
