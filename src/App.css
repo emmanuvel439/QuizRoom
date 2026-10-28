@@ -1256,3 +1256,37 @@ button:disabled {
     transition-duration: 0.01ms !important;
   }
 }
+
+
+.previous-attempts-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.previous-attempts-grid .quiz-card {
+  flex: 1 1 280px;
+}
+
+
+.previous-attempts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.previous-attempt-button {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  text-align: left;
+}
+
+.previous-attempt-date {
+  color: var(--muted);
+  font-size: 11px;
+}

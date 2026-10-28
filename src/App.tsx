@@ -10,6 +10,25 @@ type QuizId =
   | 'general-knowledge'
   | 'current-affairs';
 
+type QuizAttempt = {
+  id: string;
+  quizId: QuizId;
+  completedAt: string;
+
+  questions: QuizQuestion[];
+  answers: Record<string, string>;
+
+  negativeMarking: boolean;
+  timerEnabled: boolean;
+
+  score: number;
+  correctCount: number;
+  incorrectCount: number;
+  unansweredCount: number;
+};
+
+type AttemptsByQuiz = Record<QuizId, QuizAttempt[]>;
+
 // Each answer option has an ID (used internally) and text (shown to the user).
 type QuizOption = {
   id: string;
@@ -85,6 +104,8 @@ function getCorrectOption(question: QuizQuestion): QuizOption | undefined {
   );
 }
 
+
+
 /**
  * Checks whether a selected option is correct.
  * An unanswered question is never marked correct.
@@ -132,6 +153,26 @@ function App() {
   const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>([]);
   // dark mode storing it true means dark mode false is light mode 
   const [darkMode, setDarkMode] = useState(false);
+  
+  const [showPreviousAttempts, setShowPreviousAttempts] = useState(false);
+  const [attemptsByQuiz, setAttemptsByQuiz] =
+  useState<AttemptsByQuiz>(() => {
+    try {
+      const saved = localStorage.getItem("quizroom-attempts");
+
+      if (saved) {
+        return JSON.parse(saved) as AttemptsByQuiz;
+      }
+    } catch {
+      // Ignore invalid saved data.
+    }
+
+    return {
+      'programming-basics': [],
+      'general-knowledge': [],
+      'current-affairs': [],
+    };
+  });
 
   // Look up the selected quiz's question bank and its card metadata.
   const activeQuiz =  activeQuizId ? shuffledQuestions : null;
@@ -175,6 +216,25 @@ function App() {
     darkMode ? "dark" : "light";
 }, [darkMode]);
 
+useEffect(() => {
+  localStorage.setItem(
+    "quizroom-attempts",
+    JSON.stringify(attemptsByQuiz)
+  );
+}, [attemptsByQuiz]);
+
+function showPreviousResult(attempt: QuizAttempt) {
+  setActiveQuizId(attempt.quizId);
+  setShuffledQuestions(attempt.questions);
+  setAnswers(attempt.answers);
+
+  setNegativeMarking(attempt.negativeMarking);
+  setTimerEnabled(attempt.timerEnabled);
+
+  setShowQuizSetup(false);
+  setShowResults(true);
+  setShowPreviousAttempts(false);
+}
 
  
 
@@ -237,10 +297,39 @@ function App() {
 
   // Submit the quiz. The score is derived from `answers`, so no separate score
   // state is needed and the result cannot get out of sync with the answers.
-  function submitQuiz() {
-    if (!activeQuiz || activeQuiz.length === 0) return;
-    setShowResults(true);
-  }
+function submitQuiz() {
+  if (!activeQuizId || !activeQuiz) return;
+
+  // 1. Save this attempt
+  const attempt: QuizAttempt = {
+    id: Date.now().toString(),
+    quizId: activeQuizId,
+    completedAt: new Date().toISOString(),
+    questions: activeQuiz,
+    answers: { ...answers },
+    negativeMarking,
+    timerEnabled,
+    score,
+    correctCount,
+    incorrectCount,
+    unansweredCount,
+  };
+
+  // 2. Get previous attempts for this quiz
+  const oldAttempts = attemptsByQuiz[activeQuizId];
+
+  // 3. Add the new attempt and keep only 10
+  const updatedAttempts = [attempt, ...oldAttempts].slice(0, 10);
+
+  // 4. Update the array for this quiz
+  setAttemptsByQuiz({
+    ...attemptsByQuiz,
+    [activeQuizId]: updatedAttempts,
+  });
+
+  // 5. Show results
+  setShowResults(true);
+}
 
   // Retaking starts a fresh attempt of the same quiz.
   function retakeQuiz() {
@@ -265,7 +354,7 @@ useEffect(() => {
   }
 
   if (TimeRemaining <= 0) {
-    setShowResults(true);
+    submitQuiz();
     return;
   }
 
@@ -307,6 +396,108 @@ useEffect(() => {
       </main>
     );
   }
+  if (showPreviousAttempts) {
+  return (
+    <main className="app-shell">
+      <header className="site-header">
+        <button
+          className="back-button"
+          type="button"
+          onClick={() => setShowPreviousAttempts(false)}
+        >
+          ← Back
+        </button>
+
+        <div className="brand">
+          <span className="brand-mark">Q</span>
+          <span>quizroom</span>
+        </div>
+
+        <button
+          className="theme-toggle"
+          type="button"
+          onClick={() => setDarkMode(previous => !previous)}
+        >
+          {darkMode ? "Light mode" : "Dark mode"}
+        </button>
+      </header>
+
+      <section className="quiz-section">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">YOUR HISTORY</p>
+            <h2>Previous Attempts</h2>
+          </div>
+
+          <span className="quiz-total">
+            Maximum 10 per quiz
+          </span>
+        </div>
+
+        <div className="previous-attempts-grid">
+          {quizCards.map(quiz => {
+            const attempts = attemptsByQuiz[quiz.id];
+
+            return (
+              <article className="quiz-card" key={quiz.id}>
+                <div className="quiz-card-topline">
+                  <span className="quiz-icon">
+                    {quiz.icon}
+                  </span>
+
+                  <span className="quiz-level">
+                    {quiz.difficulty}
+                  </span>
+                </div>
+
+                <h3>{quiz.title}</h3>
+
+                <p className="quiz-description">
+                  View your previous scores and answer reviews.
+                </p>
+
+                <div className="quiz-meta">
+                  <span>{attempts.length} / 10 attempts</span>
+                </div>
+
+                {attempts.length === 0 ? (
+                  <p className="quiz-description">
+                    No previous attempts yet.
+                  </p>
+                ) : (
+                  <div className="previous-attempts-list">
+                    {attempts.map((attempt, index) => (
+                      <button
+                        className="secondary-button previous-attempt-button"
+                        type="button"
+                        key={attempt.id}
+                        onClick={() => showPreviousResult(attempt)}
+                      >
+                        <span>
+                          Attempt {attempts.length - index}
+                        </span>
+
+                        <strong>
+                          Score: {attempt.score}
+                        </strong>
+
+                        <span className="previous-attempt-date">
+                          {new Date(
+                            attempt.completedAt
+                          ).toLocaleString()}
+                        </span>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      </section>
+    </main>
+  );
+}
 
   // RESULTS SCREEN: shown only after the user submits their attempt.
   if (activeQuiz && activeQuizInfo && showResults) {
@@ -714,10 +905,18 @@ if (showQuizSetup && activeQuiz && currentQuestion) {
               >
               {darkMode ? "Light mode" : "Dark mode"}
         </button>
+        
         <div className="brand">
           <span className="brand-mark">Q</span>
           <span>quizroom</span>
         </div>
+        <button
+          className="secondary-button"
+          type="button"
+          onClick={() => setShowPreviousAttempts(true)}
+        >
+            Previous Attempts
+        </button>
         
 
         <p className="header-note">A little challenge goes a long way.</p>
