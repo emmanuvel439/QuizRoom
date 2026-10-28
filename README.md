@@ -81,13 +81,13 @@ Once you finish a quiz, the attempt is saved to your browser's local storage. Yo
 
 ## Tech stack
 
-- **React**: component state, conditional rendering of the four screens (selection, setup, quiz, results), and the timer effect
-- **TypeScript**: typed quiz IDs, question shape, and answer map
-- **Vite**: development server and build
-- **CSS**: custom properties for light/dark theming, layout, and responsive adjustments (no CSS framework)
-- **Local storage**: the browser's built-in `localStorage`, used to keep previous attempts between visits (no backend or database)
-
-Quiz data lives in plain JSON files imported at build time.
+- **React**: component state, conditional rendering of the five screens (selection, setup, quiz, results, and previous attempts), answer selection, and timer management using `useEffect`.
+- **TypeScript**: typed quiz IDs, question and answer structures, and saved attempt data, with separate attempt histories for each quiz.
+- **Vite**: development server and production build.
+- **CSS**: custom properties for light/dark theming, Flexbox and Grid layouts, and responsive adjustments (no CSS framework).
+- **Local storage**: the browser's built-in `localStorage`, used to persist previous quiz attempts across page refreshes and visits. The app retains up to 10 attempts per quiz and restores saved questions, answers, scores, and quiz settings for result review (no backend or database).
+- **Git & GitHub**: version control to track code changes and GitHub repository hosting for source code management.
+- **Vercel**: deployment and hosting of the live Quizroom web application, with GitHub integration for automated deployments.
 
 ## How QuizRoom works
 
