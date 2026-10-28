@@ -42,11 +42,19 @@ Every question with your answer, the correct answer, and an explanation.
 
 ![Answer review listing each question with explanations](screenshots/06-answer-review.png)
 
+### Previous attempts
+
+A history page that shows your past attempts for each quiz, including the attempt number, your score, and the date and time you took it. Your attempts are saved in the browser, so they are still there after a refresh.
+
+![Previous attempts page showing saved scores for each quiz](screenshots/07-previous-attempts.png)
+
 ## Overview
 
 QuizRoom is a small, self-contained quiz tool. It supports three quizzes loaded from JSON files: **Programming Basics**, **General Knowledge**, and **Current Affairs**. You choose a quiz, set two options (negative marking and timer), work through the questions, and get a results page showing your score, a correct/incorrect/unanswered breakdown, and every question with your answer, the correct answer, and the explanation.
 
 Questions and options are shuffled on every attempt. Answers are stored by question ID, so you can jump around without losing progress. Scoring respects the negative-marking option you chose at the start.
+
+Once you finish a quiz, the attempt is saved to your browser's local storage. You can come back to the previous attempts page at any time to see how you did on each quiz, and nothing gets wiped when you refresh the page or close the tab.
 
 ## Features
 
@@ -62,6 +70,8 @@ Questions and options are shuffled on every attempt. Answers are stored by quest
 - Results screen with numeric score, percentage, correct/incorrect/unanswered counts, and a full review of every question (including explanations)
 - Dark mode toggle that applies across all screens
 - Retake the quiz or return to the quiz list
+- Previous attempts page that keeps your score history for each quiz, saved in local storage so it survives a page refresh
+- Up to 10 saved attempts per quiz, each with its attempt number, score, and date and time
 
 ### Future improvements
 
@@ -76,6 +86,7 @@ Questions and options are shuffled on every attempt. Answers are stored by quest
 - **TypeScript**: typed quiz IDs, question shape, and answer map
 - **Vite**: development server and build
 - **CSS**: custom properties for light/dark theming, layout, and responsive adjustments (no CSS framework)
+- **Local storage**: the browser's built-in `localStorage`, used to keep previous attempts between visits (no backend or database)
 
 Quiz data lives in plain JSON files imported at build time.
 
@@ -91,6 +102,7 @@ Quiz data lives in plain JSON files imported at build time.
    ```
 
    Unanswered questions are not penalised. The review list walks the same shuffled array, looks up the saved answer, and marks each item correct, incorrect, or unanswered.
+5. When an attempt is submitted, it is also written to `localStorage` under that quiz. The previous attempts page reads from there and lists each quiz's saved attempts, so your history is still there the next time you open the app. Each quiz keeps a maximum of 10 attempts.
 
 ## Installation and setup
 
@@ -114,3 +126,8 @@ Or skip the setup and try the deployed version: [quiz-room-delta.vercel.app](htt
 3. Answer the questions. Use the numbered map to jump around, the **Remove answer** button to clear a selection, or Previous/Next to move sequentially. If the timer is on, it appears above the question.
 4. Click **Submit quiz** when finished, or wait for the timer to expire.
 5. Review your score, the three metric cards, and the per-question breakdown. Retake the quiz or return to the list.
+6. Want to see how you did before? Open the previous attempts page to check your saved scores for each quiz. Use **Back** to return to where you were.
+
+## A note on saved attempts
+
+Because attempts live in your browser's local storage, they are tied to the browser and device you used. Clearing your browser data, using a private window, or switching to another browser or device will start you with an empty history.
